@@ -8,7 +8,7 @@
         <h2>{{ movie.title }}</h2>
         <h3>{{ movie.original_title }}</h3>
         <p>{{ movie.original_language }}</p>
-        <p>{{ movie.vote_avarage }}</p>
+        <p>{{ movie.vote_average }}</p>
       </div>
     </div>
   </div>
