@@ -4,10 +4,12 @@
     <button @click="searchMovies">Search a Movie</button>
 
     <div v-for="movie in movies" :key="movie.id">
-      <h2>{{ movie.title }}</h2>
-      <h3>{{ movie.original_title }}</h3>
-      <p>{{ movie.original_language }}</p>
-      <p>{{ movie.vote_avarage }}</p>
+      <div>
+        <h2>{{ movie.title }}</h2>
+        <h3>{{ movie.original_title }}</h3>
+        <p>{{ movie.original_language }}</p>
+        <p>{{ movie.vote_avarage }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -17,7 +19,7 @@ import axios from "axios";
 export default {
   data() {
     return {
-      movieName: "",
+      movieName: "it",
       movies: [],
     };
   },
@@ -25,11 +27,11 @@ export default {
     searchMovies() {
       axios
         .get(
-          "https://api.themoviedb.org/3/search/movie?api_key=2f8b947658c764e57b4f430bb9ca5991&language=en-US&query=movieName&page=1&include_adult=false"
+          "https://api.themoviedb.org/3/search/movie?api_key=2f8b947658c764e57b4f430bb9ca5991&language=en-US&query=it&page=1&include_adult=false"
         )
         .then((r) => {
           console.log(r.data);
-          this.movies = r.data.movie;
+          this.movies = r.data.results;
         })
         .catch((e) => {
           console.log(e, "OPS");
