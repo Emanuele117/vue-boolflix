@@ -15,6 +15,12 @@
         <h2>{{ movie.title }}</h2>
         <h3>{{ movie.original_title }}</h3>
         <p>{{ movie.original_language }} | {{ movie.vote_average }}</p>
+        <img
+          :src="
+            require(`../assets/img-bandiere/${movie.original_language}.png`)
+          "
+          alt=""
+        />
         <hr />
       </div>
     </div>
@@ -23,6 +29,7 @@
       <div class="serieTv" v-for="serie in series" :key="serie.id">
         <h2>{{ serie.name }}</h2>
         <h3>{{ serie.original_name }}</h3>
+
         <p>{{ serie.original_language }} | {{ serie.vote_average }}</p>
         <hr />
       </div>
@@ -51,7 +58,7 @@ export default {
       const series_url = `${this.series_url}?api_key=${this.api_key}&query=${this.searchString}`;
 
       axios
-        .get(full_url, series_url)
+        .get(full_url)
         .then((r) => {
           console.log(r.data);
           this.movies = r.data.results;
