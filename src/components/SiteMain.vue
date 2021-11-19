@@ -29,8 +29,13 @@
       <div class="serieTv" v-for="serie in series" :key="serie.id">
         <h2>{{ serie.name }}</h2>
         <h3>{{ serie.original_name }}</h3>
-
         <p>{{ serie.original_language }} | {{ serie.vote_average }}</p>
+        <img
+          :src="
+            require(`../assets/img-bandiere/${serie.original_language}.png`)
+          "
+          alt=""
+        />
         <hr />
       </div>
     </div>
