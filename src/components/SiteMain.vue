@@ -10,6 +10,7 @@
       />
       <button @click="search">Search</button>
 
+      <h1>Results for Movies:</h1>
       <div class="movie" v-for="movie in movies" :key="movie.id">
         <h2>{{ movie.title }}</h2>
         <h3>{{ movie.original_title }}</h3>
@@ -18,9 +19,7 @@
       </div>
     </div>
     <div class="series">
-      <input type="text" placeholder="Search Series" v-model="seriesString" />
-      <button @click="searchSeries">Search</button>
-
+      <h1>Results for Series:</h1>
       <div class="serieTv" v-for="serie in series" :key="serie.id">
         <h2>{{ serie.name }}</h2>
         <h3>{{ serie.original_name }}</h3>
@@ -38,7 +37,7 @@ export default {
   data() {
     return {
       searchString: "",
-      seriesString: "",
+
       movies: [],
       series: [],
       movies_url: "https://api.themoviedb.org/3/search/movie",
@@ -49,9 +48,10 @@ export default {
   methods: {
     search() {
       const full_url = `${this.movies_url}?api_key=${this.api_key}&query=${this.searchString}`;
+      const series_url = `${this.series_url}?api_key=${this.api_key}&query=${this.searchString}`;
 
       axios
-        .get(full_url)
+        .get(full_url, series_url)
         .then((r) => {
           console.log(r.data);
           this.movies = r.data.results;
@@ -59,9 +59,6 @@ export default {
         .catch((e) => {
           console.log(e, "OPS");
         });
-    },
-    searchSeries() {
-      const series_url = `${this.series_url}?api_key=${this.api_key}&query=${this.seriesString}`;
 
       axios
         .get(series_url)
