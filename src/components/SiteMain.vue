@@ -11,7 +11,12 @@
       <button @click="search">Search</button>
 
       <h1>Results for Movies:</h1>
+
       <div class="movie" v-for="movie in movies" :key="movie.id">
+        <img
+          :src="`https://image.tmdb.org/t/p/w200/${movie.poster_path}`"
+          alt=""
+        />
         <h2>{{ movie.title }}</h2>
         <h3>{{ movie.original_title }}</h3>
         <p>{{ movie.original_language }} | {{ movie.vote_average }}</p>
@@ -27,6 +32,10 @@
     <div class="series">
       <h1>Results for Series:</h1>
       <div class="serieTv" v-for="serie in series" :key="serie.id">
+        <img
+          :src="`https://image.tmdb.org/t/p/w200/${serie.poster_path}`"
+          alt=""
+        />
         <h2>{{ serie.name }}</h2>
         <h3>{{ serie.original_name }}</h3>
         <p>{{ serie.original_language }} | {{ serie.vote_average }}</p>
