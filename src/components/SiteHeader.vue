@@ -1,5 +1,6 @@
 <template>
   <header>
+    <img src="../assets/img-bandiere/logo.netflix.png" alt="" />
     <input
       v-model="searchString"
       type="text"
@@ -24,5 +25,9 @@ export default {
 <style lang="scss">
 header {
   height: 100px;
+  background-color: black;
+  img {
+    height: 100px;
+  }
 }
 </style>
