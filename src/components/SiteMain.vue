@@ -1,13 +1,11 @@
 <template>
   <div class="container movieAndSeries">
-    <div class="movies">
-      <SiteHeader @search-tvshows="search()" />
-
-      <h1>Results for Movies:</h1>
-
+    <SiteHeader @search-tvshows="search" />
+    <h1>Results for Movies:</h1>
+    <div class="container movies">
       <div class="movie" v-for="movie in movies" :key="movie.id">
         <img
-          :src="`https://image.tmdb.org/t/p/w342/${movie.poster_path}`"
+          :src="`https://image.tmdb.org/t/p/w200/${movie.poster_path}`"
           alt=""
         />
         <h2>{{ movie.title }}</h2>
@@ -22,11 +20,11 @@
         <hr />
       </div>
     </div>
-    <div class="series">
-      <h1>Results for Series:</h1>
+    <h1>Results for Series:</h1>
+    <div class="container series">
       <div class="serieTv" v-for="serie in series" :key="serie.id">
         <img
-          :src="`https://image.tmdb.org/t/p/w342/${serie.poster_path}`"
+          :src="`https://image.tmdb.org/t/p/w200/${serie.poster_path}`"
           alt=""
         />
         <h2>{{ serie.name }}</h2>
@@ -52,7 +50,6 @@ export default {
   data() {
     return {
       searchString: "",
-
       movies: [],
       series: [],
       movies_url: "https://api.themoviedb.org/3/search/movie",
@@ -61,9 +58,9 @@ export default {
     };
   },
   methods: {
-    search() {
-      const full_url = `${this.movies_url}?api_key=${this.api_key}&query=${this.searchString}`;
-      const series_url = `${this.series_url}?api_key=${this.api_key}&query=${this.searchString}`;
+    search(searchString) {
+      const full_url = `${this.movies_url}?api_key=${this.api_key}&query=${searchString}`;
+      const series_url = `${this.series_url}?api_key=${this.api_key}&query=${searchString}`;
 
       axios
         .get(full_url)
@@ -93,8 +90,10 @@ export default {
 </script>
 
 <style lang="scss">
-.movieAndSeries {
+.movies {
   display: flex;
-  justify-content: space-around;
+}
+.series {
+  display: flex;
 }
 </style>

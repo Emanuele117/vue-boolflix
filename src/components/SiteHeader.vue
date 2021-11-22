@@ -21,5 +21,8 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+header {
+  height: 100px;
+}
 </style>
