@@ -1,20 +1,13 @@
 <template>
   <div class="container movieAndSeries">
     <div class="movies">
-      <input
-        v-model="searchString"
-        type="text"
-        name="search"
-        id="search"
-        placeholder="Search a Movie"
-      />
-      <button @click="search">Search</button>
+      <SiteHeader @search-tvshows="search()" />
 
       <h1>Results for Movies:</h1>
 
       <div class="movie" v-for="movie in movies" :key="movie.id">
         <img
-          :src="`https://image.tmdb.org/t/p/w200/${movie.poster_path}`"
+          :src="`https://image.tmdb.org/t/p/w342/${movie.poster_path}`"
           alt=""
         />
         <h2>{{ movie.title }}</h2>
@@ -33,7 +26,7 @@
       <h1>Results for Series:</h1>
       <div class="serieTv" v-for="serie in series" :key="serie.id">
         <img
-          :src="`https://image.tmdb.org/t/p/w200/${serie.poster_path}`"
+          :src="`https://image.tmdb.org/t/p/w342/${serie.poster_path}`"
           alt=""
         />
         <h2>{{ serie.name }}</h2>
@@ -52,6 +45,7 @@
 </template>
 
 <script>
+import SiteHeader from "./SiteHeader.vue";
 import axios from "axios";
 
 export default {
@@ -91,6 +85,9 @@ export default {
           console.log(e, "OPS");
         });
     },
+  },
+  components: {
+    SiteHeader,
   },
 };
 </script>
