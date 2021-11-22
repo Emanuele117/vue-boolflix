@@ -1,42 +1,50 @@
 <template>
   <div class="container movieAndSeries">
     <SiteHeader @search-tvshows="search" />
-    <h1>Results for Movies:</h1>
+    <h1 class="results-films">Results for Movies:</h1>
     <div class="container movies">
       <div class="movie" v-for="movie in movies" :key="movie.id">
-        <img
-          :src="`https://image.tmdb.org/t/p/w200/${movie.poster_path}`"
-          alt=""
-        />
-        <h2>{{ movie.title }}</h2>
-        <h3>{{ movie.original_title }}</h3>
-        <p>{{ movie.original_language }} | {{ movie.vote_average }}</p>
-        <img
-          :src="
-            require(`../assets/img-bandiere/${movie.original_language}.png`)
-          "
-          alt=""
-        />
-        <hr />
+        <div class="img">
+          <img
+            :src="`https://image.tmdb.org/t/p/w200/${movie.poster_path}`"
+            alt=""
+          />
+        </div>
+        <div class="info">
+          <h5>Titolo: {{ movie.title }}</h5>
+          <h5>Titolo Originale: {{ movie.original_title }}</h5>
+          <h5>Voto: {{ movie.vote_average }}</h5>
+          <h5>Overview: {{ movie.overview }}</h5>
+          <!-- <img
+            :src="
+              require(`../assets/img-bandiere/${movie.original_language}.png`)
+            "
+            alt=""
+          /> -->
+        </div>
       </div>
     </div>
-    <h1>Results for Series:</h1>
+    <h1 class="results-serieTv">Results for Series:</h1>
     <div class="container series">
       <div class="serieTv" v-for="serie in series" :key="serie.id">
-        <img
-          :src="`https://image.tmdb.org/t/p/w200/${serie.poster_path}`"
-          alt=""
-        />
-        <h2>{{ serie.name }}</h2>
-        <h3>{{ serie.original_name }}</h3>
-        <p>{{ serie.original_language }} | {{ serie.vote_average }}</p>
-        <img
+        <div class="img_series">
+          <img
+            :src="`https://image.tmdb.org/t/p/w200/${serie.poster_path}`"
+            alt=""
+          />
+        </div>
+        <div class="info_series">
+          <h5>Titolo: {{ serie.name }}</h5>
+          <h5>Titolo Originale: {{ serie.original_name }}</h5>
+          <h5>Voto: {{ serie.vote_average }}</h5>
+          <h5>Overview: {{ serie.overview }}</h5>
+        </div>
+        <!-- <img
           :src="
             require(`../assets/img-bandiere/${serie.original_language}.png`)
           "
           alt=""
-        />
-        <hr />
+        /> -->
       </div>
     </div>
   </div>
@@ -90,10 +98,77 @@ export default {
 </script>
 
 <style lang="scss">
+#app {
+  background-color: black;
+}
+.results-films {
+  color: white;
+  font-size: 22px;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
 .movies {
   display: flex;
+
+  flex-wrap: wrap;
+  .movie {
+    position: relative;
+    margin-bottom: 1rem;
+  }
+  .movie:hover {
+    .info {
+      display: block;
+    }
+  }
+
+  .info {
+    padding: 15px;
+    background-color: rgba($color: #000000, $alpha: 0.9);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+
+    h5 {
+      font-size: 10px;
+      color: white;
+    }
+  }
+}
+.results-serieTv {
+  color: white;
+  font-size: 22px;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
 }
 .series {
   display: flex;
+  flex-wrap: wrap;
+  .serieTv {
+    position: relative;
+    margin-bottom: 1rem;
+  }
+  .serieTv:hover {
+    .info_series {
+      display: block;
+    }
+  }
+  .info_series {
+    padding: 15px;
+    background-color: rgba($color: #000000, $alpha: 0.9);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+
+    h5 {
+      font-size: 10px;
+      color: white;
+    }
+  }
 }
 </style>
