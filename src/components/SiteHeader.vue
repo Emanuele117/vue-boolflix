@@ -29,11 +29,11 @@ header {
   height: 100px;
   background-color: black;
   img {
-    height: 120px;
+    height: 140px;
     margin-left: 1rem;
   }
   input {
-    margin-left: 50rem;
+    margin-left: 46rem;
   }
 }
 </style>

@@ -15,12 +15,12 @@
           <h5>Titolo Originale: {{ movie.original_title }}</h5>
           <h5>Voto: {{ movie.vote_average }}</h5>
           <h5>Overview: {{ movie.overview }}</h5>
-          <!-- <img
+          <img
             :src="
               require(`../assets/img-bandiere/${movie.original_language}.png`)
             "
             alt=""
-          /> -->
+          />
         </div>
       </div>
     </div>
@@ -38,13 +38,13 @@
           <h5>Titolo Originale: {{ serie.original_name }}</h5>
           <h5>Voto: {{ serie.vote_average }}</h5>
           <h5>Overview: {{ serie.overview }}</h5>
+          <img
+            :src="
+              require(`../assets/img-bandiere/${serie.original_language}.png`)
+            "
+            alt=""
+          />
         </div>
-        <!-- <img
-          :src="
-            require(`../assets/img-bandiere/${serie.original_language}.png`)
-          "
-          alt=""
-        /> -->
       </div>
     </div>
   </div>
@@ -105,11 +105,12 @@ export default {
   color: white;
   font-size: 22px;
   margin-bottom: 2rem;
-  margin-top: 2rem;
+  margin-top: 5rem;
+  margin-left: 3rem;
 }
 .movies {
   display: flex;
-
+  justify-content: center;
   flex-wrap: wrap;
   .movie {
     position: relative;
@@ -142,10 +143,12 @@ export default {
   font-size: 22px;
   margin-bottom: 2rem;
   margin-top: 2rem;
+  margin-left: 3rem;
 }
 .series {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   .serieTv {
     position: relative;
     margin-bottom: 1rem;
@@ -156,7 +159,7 @@ export default {
     }
   }
   .info_series {
-    padding: 15px;
+    padding: 20px;
     background-color: rgba($color: #000000, $alpha: 0.9);
     position: absolute;
     top: 0;
@@ -166,7 +169,7 @@ export default {
     display: none;
 
     h5 {
-      font-size: 10px;
+      font-size: 9px;
       color: white;
     }
   }
